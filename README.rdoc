@@ -47,6 +47,49 @@ call its "run" method. This can be from a separate thread of
 control, and probably should be if your application is doing
 other tasks in the background.
 
+=== Rendering
+The render instance method sets the response content. For example,
+
+    render :html => '<html><body>Hello World</body></html>'
+
+sends the greeting to the browser with a content type of 'text/html'.
+Content types are guessed intelligently using Rack::Mime, so things like
+
+    render :json => '{ :a => "b" }'
+
+and
+
+    render :jpg => some_jpeg_data
+
+should be supported.
+
+The render method supports setting the response status code:
+
+    render :error => 404, :html => your_404_page
+
+Files can be sent instead of rendering some string content:
+    send_file '/path/to/file'
+Note that no protection is provided against directory-traversal
+when using send_file. The files_dir facility should be used for
+serving static files.
+
+=== Static Files
+To serve up static files alongside your interface,
+set the `files_dir` attribute on your interface class:
+
+    class MyInterface
+        self.files_dir = "/path/to/static/files"
+        ... routes and handlers ...
+    end
+
+The path may be either absolute or relative. If no route is matched
+by an incoming request, Patchbay will try to find a matching file
+in the path given. Requested filenames are canonicalized using
+File.realpath and checked that they fall within the path
+provided. This prevents directory-traversal attacks, but also will
+result in errors if symlinks within the static files path point to
+an outside location.
+
 == Interface Instances
 
 Interface instances can have attributes and instance variables,
