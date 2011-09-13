@@ -36,7 +36,7 @@ invoked when an incoming request matches the route.
 
 Routes can contain symbols representing variable parameters:
 
-`get '/say/:something' { render :html => params[:something] }`
+    get '/say/:something' { render :html => params[:something] }
 
 The parameters are accessed via the "params" instance method,
 which returns a hash of all parameters interpolated from the URL.
