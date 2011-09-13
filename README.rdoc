@@ -55,6 +55,10 @@ interface to be connected to any application objects with
 minimum effort. The attributes, instance variables, and instance
 methods are accessible to the request handlers.
 
+An interface instance is a valid Rack application, so Patchbay
+works with servers including WEBrick, Mongrel, and Thin.
+There is an example Rack configuration in the examples directory.
+
 == License
 
 Copyright (C) 2011 by Andrew H. Armenia.
