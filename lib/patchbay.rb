@@ -320,7 +320,7 @@ private
         @response = [200, { "Content-Type" => "text/html" }, []]
         options.each do |key, value|
             case key
-                when :error
+                when :error, :status
                     @response[0] = value
                 else
                     @response[1]["Content-Type"] = Rack::Mime.mime_type("."+key.to_s)

@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
     s.name              = "patchbay"
-    s.version           = "0.0.1.pre3"
-    s.date              = "2011-09-13"
+    s.version           = "0.0.1.pre5"
+    s.date              = "2014-10-15"
     s.summary           = "Embed HTTP APIs in non-web apps easily"
     s.description       = <<EOT
 Patchbay is the web framework for non-web apps. 
